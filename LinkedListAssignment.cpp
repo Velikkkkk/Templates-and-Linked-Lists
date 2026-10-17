@@ -1,3 +1,7 @@
+/*
+* Author: Elizaveta
+ * Description: Implements the LinkedList methods.
+ */
 
 #include "LinkedListAssignment.h"
 
@@ -35,6 +39,51 @@ void LinkedList<T>::addItem(T item) {
 
     size++;
 }
+
+template <typename T>
+bool LinkedList<T>::find(T item) const {
+    ListNode<T>* current = head;
+
+    while (current != nullptr) {
+        if (current->data == item) {
+            return true;
+        }
+
+        current = current->next;
+    }
+
+    return false;
+}
+
+template <typename T>
+void LinkedList<T>::remove(T item) {
+    ListNode<T>* current = head;
+    ListNode<T>* previous = nullptr;
+
+    while (current != nullptr) {
+        if (current->data == item) {
+            // Removing the first node
+            if (previous == nullptr) {
+                head = current->next;
+            } else {
+                previous->next = current->next;
+            }
+
+            // If the last node was removed, update tail
+            if (current == tail) {
+                tail = previous;
+            }
+
+            delete current;
+            size--;
+            return;
+        }
+
+        previous = current;
+        current = current->next;
+    }
+}
+
 template <typename T>
 int LinkedList<T>::getSize() const {
     return size;
