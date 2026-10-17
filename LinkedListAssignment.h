@@ -1,4 +1,7 @@
-
+/*
+* Author: Elizaveta
+ * Description: Defines the templated LinkedList class and the ListNode structure.
+ */
 #ifndef LINKEDLISTASSIGNMENT_H
 #define LINKEDLISTASSIGNMENT_H
 
